@@ -31,7 +31,7 @@ import {
   CheckCircle2,
   Layers,
 } from "lucide-react";
-import profileImg from "@/assets/profile.jpg";
+import profileImg from "@/assets/profile.jpeg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -415,18 +415,18 @@ function Portfolio() {
             <span className="text-foreground">.dev</span>
           </button>
 
-          <ul className="hidden items-center gap-1 lg:flex">
+          <ul className="hidden items-center gap-0.5 lg:flex">
             {NAV.map((n) => (
               <li key={n.id}>
                 <button
                   onClick={() => scrollTo(n.id)}
-                  className={`relative rounded-full px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                  className={`relative rounded-full px-2.5 py-2 text-xs font-medium transition-colors hover:text-primary xl:px-3 xl:text-sm ${
                     active === n.id ? "text-primary" : "text-muted-foreground"
                   }`}
                 >
                   {n.label}
                   {active === n.id && (
-                    <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-primary" />
+                    <span className="absolute inset-x-2.5 -bottom-0.5 h-0.5 rounded-full bg-primary" />
                   )}
                 </button>
               </li>
@@ -453,12 +453,12 @@ function Portfolio() {
 
         {menuOpen && (
           <div className="glass border-t border-border lg:hidden">
-            <ul className="mx-auto flex max-w-7xl flex-col p-4">
+            <ul className="mx-auto grid max-w-7xl grid-cols-2 gap-1 p-3 sm:grid-cols-3">
               {NAV.map((n) => (
                 <li key={n.id}>
                   <button
                     onClick={() => scrollTo(n.id)}
-                    className={`w-full rounded-lg px-4 py-3 text-left text-sm font-medium transition-colors hover:bg-primary/10 ${
+                    className={`w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-colors hover:bg-primary/10 ${
                       active === n.id ? "text-primary" : "text-foreground"
                     }`}
                   >
@@ -498,7 +498,7 @@ function Portfolio() {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="Scroll to top"
-          className="fixed bottom-6 right-6 z-40 grid h-12 w-12 place-items-center rounded-full gradient-primary text-primary-foreground shadow-glow transition-all hover:scale-110"
+          className="fixed bottom-20 right-4 z-40 grid h-11 w-11 place-items-center rounded-full gradient-primary text-primary-foreground shadow-glow transition-all hover:scale-110 sm:bottom-6 sm:right-6 sm:h-12 sm:w-12"
         >
           <ArrowUp className="h-5 w-5" />
         </button>
@@ -514,7 +514,7 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
       <span className="mb-3 inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
         {eyebrow}
       </span>
-      <h2 className="font-display text-4xl font-bold md:text-5xl">
+      <h2 className="font-display text-3xl font-bold sm:text-4xl md:text-5xl">
         <span className="gradient-text">{title}</span>
       </h2>
       <div className="mx-auto mt-4 h-1 w-20 rounded-full gradient-primary" />
@@ -525,42 +525,43 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
 function HeroSection({ typed, onNav }: { typed: string; onNav: (id: string) => void }) {
   return (
     <section id="home" className="relative flex min-h-[calc(100vh-5rem)] items-center px-4 md:px-8">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 py-16 md:grid-cols-2">
-        <div className="animate-fade-up">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 py-12 md:grid-cols-2 md:gap-12 md:py-16">
+        {/* Text — shown second on mobile (order-2), first on md+ */}
+        <div className="animate-fade-up order-2 text-center md:order-1 md:text-left">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
             👋 Hello, I'm
           </p>
-          <h1 className="font-display text-5xl font-bold leading-tight md:text-7xl">
+          <h1 className="font-display text-4xl font-bold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
             <span className="gradient-text">Henil Patel</span>
           </h1>
-          <div className="mt-4 flex items-baseline gap-2 text-2xl font-semibold text-muted-foreground md:text-3xl">
+          <div className="mt-3 flex flex-wrap items-baseline justify-center gap-2 text-xl font-semibold text-muted-foreground sm:text-2xl md:justify-start md:text-3xl">
             <span>I'm a</span>
             <span className="text-primary">{typed}</span>
             <span className="animate-blink text-primary">|</span>
           </div>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base md:mx-0 md:text-lg">
             A passionate fresher developer with a love for clean code, elegant UI and
             solving real-world problems. I build fast, accessible web experiences and
             keep learning every day.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
             <a
               href="/resume/Henil_Patel_Resume.pdf"
               download
-              className="group inline-flex items-center gap-2 rounded-full gradient-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow transition-all hover:scale-105"
+              className="group inline-flex items-center gap-2 rounded-full gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition-all hover:scale-105 sm:px-6 sm:py-3"
             >
               <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
               Download Resume
             </a>
             <button
               onClick={() => onNav("contact")}
-              className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold transition-all hover:scale-105 hover:text-primary"
+              className="glass inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-105 hover:text-primary sm:px-6 sm:py-3"
             >
               <Mail className="h-4 w-4" />
               Contact Me
             </button>
           </div>
-          <div className="mt-8 flex gap-4">
+          <div className="mt-6 flex justify-center gap-4 md:justify-start">
             {[
               { icon: Linkedin, href: "https://www.linkedin.com/in/henil-patel-845a34303/", label: "LinkedIn" },
               { icon: Github, href: "https://github.com/Henil140804", label: "GitHub" },
@@ -580,16 +581,13 @@ function HeroSection({ typed, onNav }: { typed: string; onNav: (id: string) => v
           </div>
         </div>
 
-        <div className="relative animate-fade-up justify-self-center [animation-delay:150ms]">
+        {/* Photo — shown first on mobile (order-1), second on md+ */}
+        <div className="relative animate-fade-up order-1 justify-self-center [animation-delay:150ms] md:order-2">
           <div className="absolute inset-0 -z-10 rounded-full bg-primary/30 blur-3xl" />
           <div className="animate-floaty relative">
-            {/* Rotating gradient ring */}
             <div className="absolute -inset-3 rounded-full animate-spin-slow" style={{ background: "conic-gradient(from 0deg, oklch(0.68 0.18 245), oklch(0.78 0.16 215), oklch(0.88 0.12 190), oklch(0.68 0.18 245))", padding: "3px", borderRadius: "9999px" }} />
-            {/* Outer glow ring */}
             <div className="absolute -inset-5 rounded-full border-2 border-primary/20 shadow-glow" />
-            {/* Inner glow blur */}
             <div className="absolute -inset-4 rounded-full gradient-primary opacity-30 blur-xl" />
-            {/* Photo */}
             <div className="relative overflow-hidden rounded-full border-4 border-primary/60 shadow-glow" style={{ padding: "4px", background: "var(--gradient-primary)", borderRadius: "9999px" }}>
               <div className="overflow-hidden rounded-full">
                 <img
@@ -597,7 +595,7 @@ function HeroSection({ typed, onNav }: { typed: string; onNav: (id: string) => v
                   alt="Henil Patel — Software Developer"
                   width={400}
                   height={400}
-                  className="h-72 w-72 object-cover md:h-96 md:w-96"
+                  className="h-48 w-48 object-cover sm:h-64 sm:w-64 md:h-80 md:w-80 lg:h-96 lg:w-96"
                 />
               </div>
             </div>
@@ -642,13 +640,13 @@ function StatsBar() {
   return (
     <section className="px-4 md:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="glass reveal grid grid-cols-2 gap-4 rounded-2xl p-6 md:grid-cols-4 md:p-8">
+        <div className="glass reveal grid grid-cols-2 gap-4 rounded-2xl p-5 md:grid-cols-4 md:p-8">
           {STATS.map((s) => (
             <div key={s.label} className="text-center">
-              <div className="font-display text-3xl font-bold gradient-text md:text-4xl">
+              <div className="font-display text-2xl font-bold gradient-text sm:text-3xl md:text-4xl">
                 <AnimatedCounter target={s.value} suffix={s.suffix} />
               </div>
-              <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground md:text-sm font-semibold">
+              <div className="mt-1 text-[10px] uppercase tracking-widest text-muted-foreground sm:text-xs md:text-sm font-semibold">
                 {s.label}
               </div>
             </div>
@@ -676,23 +674,26 @@ function AboutSection() {
           <div className="reveal glass rounded-2xl p-8 shadow-card">
             <h3 className="mb-3 font-display text-2xl font-bold text-primary">Professional Summary</h3>
             <p className="text-muted-foreground">
-              I'm a final-year Information Technology student and a passionate fresher software
-              developer. I enjoy crafting responsive interfaces with React, writing clean
-              backend logic, and turning problems into simple, elegant solutions.
+              I'm a B.E. Information Technology graduate from LDRP-ITR, Gandhinagar with a CGPA of 8.48.
+              I specialize in building responsive web interfaces with React, crafting clean backend logic,
+              and solving real-world problems through well-structured code. With hands-on internship
+              experience at TatvaSoft and Shambhavi Technovation, I've worked across the full stack
+              using technologies like Python, Java, JavaScript, Node.js, and SQL.
             </p>
             <h3 className="mb-3 mt-6 font-display text-2xl font-bold text-primary">Career Objective</h3>
             <p className="text-muted-foreground">
-              To join a forward-thinking team where I can contribute my skills in full-stack
-              development, grow as an engineer, and build products that make a real impact.
+              To secure a software development role where I can apply my skills in full-stack
+              development, contribute to impactful products, and continue growing as an engineer
+              alongside a driven and collaborative team.
             </p>
           </div>
           <div className="reveal glass rounded-2xl p-8 shadow-card">
             <h3 className="mb-5 font-display text-2xl font-bold text-primary">Personal Info</h3>
             <ul className="space-y-3">
               {info.map((i) => (
-                <li key={i.label} className="flex flex-wrap items-baseline justify-between gap-2 border-b border-border/60 pb-2 last:border-none">
-                  <span className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">{i.label}</span>
-                  <span className="text-sm font-medium">{i.value}</span>
+                <li key={i.label} className="flex flex-col gap-0.5 border-b border-border/60 pb-2 last:border-none sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-2">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{i.label}</span>
+                  <span className="break-all text-sm font-medium sm:break-normal sm:text-right">{i.value}</span>
                 </li>
               ))}
             </ul>
@@ -769,13 +770,15 @@ function EducationSection() {
       <div className="mx-auto max-w-5xl">
         <SectionHeading eyebrow="Journey" title="Education" />
         <div className="relative space-y-8">
+          {/* Timeline line — always on left on mobile, centered on md+ */}
           <div className="absolute left-4 top-0 h-full w-0.5 bg-gradient-to-b from-primary via-primary/40 to-transparent md:left-1/2" />
+
           <div className="reveal relative pl-14 md:pl-0">
             <div className="absolute left-2 top-2 grid h-6 w-6 place-items-center rounded-full gradient-primary shadow-glow md:left-1/2 md:-translate-x-1/2">
               <GraduationCap className="h-3 w-3 text-primary-foreground" />
             </div>
-            <div className="glass rounded-2xl p-6 shadow-card md:ml-[calc(50%+2rem)] md:max-w-lg">
-              <div className="flex items-center justify-between">
+            <div className="glass rounded-2xl p-5 shadow-card md:ml-[calc(50%+2rem)] md:max-w-lg">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
                   2022 – 2026
                 </span>
@@ -783,9 +786,9 @@ function EducationSection() {
                   CGPA: 8.48
                 </span>
               </div>
-              <h3 className="mt-2 font-display text-2xl font-bold">Bachelors in Engineering</h3>
+              <h3 className="mt-2 font-display text-xl font-bold sm:text-2xl">Bachelors in Engineering</h3>
               <p className="text-primary font-semibold">Information Technology</p>
-              <p className="mt-1 text-muted-foreground font-medium">
+              <p className="mt-1 text-sm text-muted-foreground font-medium">
                 LDRP Institute of Technology and Research (LDRP-ITR), Gandhinagar
               </p>
               <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
@@ -798,8 +801,8 @@ function EducationSection() {
             <div className="absolute left-2 top-2 grid h-6 w-6 place-items-center rounded-full gradient-primary shadow-glow md:left-1/2 md:-translate-x-1/2">
               <GraduationCap className="h-3 w-3 text-primary-foreground" />
             </div>
-            <div className="glass rounded-2xl p-6 shadow-card md:mr-[calc(50%+2rem)] md:max-w-lg md:text-right">
-              <div className="flex items-center justify-between md:justify-end md:gap-3">
+            <div className="glass rounded-2xl p-5 shadow-card md:mr-[calc(50%+2rem)] md:max-w-lg md:text-right">
+              <div className="flex flex-wrap items-center gap-2 md:justify-end">
                 <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
                   2020 – 2022
                 </span>
@@ -807,9 +810,9 @@ function EducationSection() {
                   HSC: 65%
                 </span>
               </div>
-              <h3 className="mt-2 font-display text-2xl font-bold">Higher Secondary (HSC)</h3>
+              <h3 className="mt-2 font-display text-xl font-bold sm:text-2xl">Higher Secondary (HSC)</h3>
               <p className="text-primary font-semibold">Science Stream</p>
-              <p className="mt-1 text-muted-foreground font-medium">
+              <p className="mt-1 text-sm text-muted-foreground font-medium">
                 Knowledge High School, Nadiad
               </p>
             </div>
@@ -1122,7 +1125,7 @@ function ResumeSection() {
               <iframe
                 src={`${resumeUrl}#toolbar=0&navpanes=0`}
                 title="Henil Patel Resume Document"
-                className="h-[600px] w-full border-none"
+                className="h-[50vh] min-h-[300px] w-full border-none sm:h-[600px]"
               />
             </div>
 
@@ -1281,7 +1284,7 @@ function CertificationsSection() {
                 <iframe
                   src={`${activeCert.file}#toolbar=0&navpanes=0`}
                   title={activeCert.title}
-                  className="h-[450px] w-full border-none"
+                  className="h-[40vh] min-h-[260px] w-full border-none sm:h-[450px]"
                 />
               </div>
             )}
@@ -1463,7 +1466,7 @@ function ContactSection() {
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs uppercase tracking-widest text-muted-foreground">{i.label}</p>
-                    <a href={i.href} className="block truncate text-sm font-semibold hover:text-primary">
+                    <a href={i.href} className="block break-all text-sm font-semibold hover:text-primary sm:truncate">
                       {i.value}
                     </a>
                   </div>
