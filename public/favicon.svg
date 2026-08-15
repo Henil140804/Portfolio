@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="5" y="5" width="90" height="90" rx="24" fill="url(#bgGrad)"/>
+  
+  <!-- Glowing Border -->
+  <rect x="5" y="5" width="90" height="90" rx="24" fill="none" stroke="url(#glowGrad)" stroke-width="4" opacity="0.9"/>
+  
+  <!-- Monogram Code Braces & HP Text -->
+  <text x="50" y="63" font-family="'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif" font-size="40" font-weight="800" text-anchor="middle" fill="url(#glowGrad)" letter-spacing="1">HP</text>
+  
+  <!-- Subtle glowing dot accent -->
+  <circle cx="76" cy="28" r="5" fill="#38bdf8"/>
+</svg>
